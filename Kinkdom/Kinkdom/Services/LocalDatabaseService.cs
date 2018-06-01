@@ -21,7 +21,7 @@ namespace Kinkdom.Services
         {
             _fakeDataService = new FakeDataService();
             LoadDatabase();
-            Task.Run(async () => await LoadTables());
+            LoadTables();
         }
 
         private void LoadDatabase()
@@ -32,7 +32,7 @@ namespace Kinkdom.Services
             Db = new SQLiteConnection(dbPath);
         }
 
-        public async Task LoadTables()
+        public async void LoadTables()
         {
             Db.CreateTable<Category>();
             if (!Db.Table<Category>().Any())
@@ -60,6 +60,7 @@ namespace Kinkdom.Services
             var table = Db.Table<Category>();
             foreach (var item in table)
             {
+                Debug.Write("|     [DEBUG]     | " + item.Id + " - " + item.Title);
                 tmpList.Add(item);
             }
             await Task.CompletedTask;
