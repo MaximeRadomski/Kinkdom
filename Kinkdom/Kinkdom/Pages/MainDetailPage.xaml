@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kinkdom.Views.MainDetailPage"
+             Title="KINKDOM">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="blackOnWhiteLabelMedium" TargetType="Label">
+                <Setter Property="TextColor" Value="#000000"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+            <Style x:Key="whiteOnBlackLabelMedium" TargetType="Label">
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Padding="10" BackgroundColor="White" Spacing="10">
+        <Label Style="{StaticResource blackOnWhiteLabelMedium}" HorizontalOptions="CenterAndExpand" Text="''Because it's good to have kinks''"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--TOYS-->
+            <StackLayout Grid.Column="0" Grid.Row="0" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="0"/>
+                </StackLayout.GestureRecognizers>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Toys" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="MenuIcon01.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+            </StackLayout>
+
+            <!--RESTRAINTS-->
+            <StackLayout Grid.Column="1" Grid.Row="0" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="1"/>
+                </StackLayout.GestureRecognizers>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Restraints" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="MenuIcon02.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+            </StackLayout>
+
+            <!--FURNITURES-->
+            <StackLayout Grid.Column="0" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="2"/>
+                </StackLayout.GestureRecognizers>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Furnitures" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="MenuIcon03.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+            </StackLayout>
+
+            <!--OUTFITS-->
+            <StackLayout Grid.Column="1" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="3"/>
+                </StackLayout.GestureRecognizers>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Outfits" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="MenuIcon04.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+            </StackLayout>
+
+            <!--PRACTICES-->
+            <StackLayout Grid.Column="0" Grid.Row="2" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="4"/>
+                </StackLayout.GestureRecognizers>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Practices" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="MenuIcon05.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+            </StackLayout>
+
+            <!--ABOUT-->
+            <StackLayout Grid.Column="1" Grid.Row="2" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushAboutCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="About" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="MenuIcon06.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+            </StackLayout>
+        </Grid>
+        <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout x:Name="RandomContainer" Spacing="0" Margin="0" Padding="0">
+                <StackLayout BackgroundColor="Black" HeightRequest="30" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+                <StackLayout></StackLayout>    
+            </StackLayout>
+        </StackLayout>-->
+    </StackLayout>
+</ContentPage>
