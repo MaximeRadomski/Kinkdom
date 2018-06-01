@@ -11,14 +11,16 @@ namespace Kinkdom.PageModels
         public Category Category { get; set; }
 
         private readonly ILocalDatabaseService _localDatabaseService;
+        private readonly INavigation _navigation;
 
-        public CategoryPageModel(int categoryId)
+        public CategoryPageModel(int categoryId, INavigation navigation)
         {
+            _navigation = navigation;
             _localDatabaseService = App.Container.Resolve<ILocalDatabaseService>();
-            Task.Run(async () => await LoadItems(categoryId));
+            LoadItems(categoryId);
         }
 
-        public async Task LoadItems(int categoryId)
+        public async void LoadItems(int categoryId)
         {
             Category = await _localDatabaseService.GetCategoryFromId(categoryId);
         }

@@ -15,8 +15,7 @@ namespace Kinkdom.Pages
 	{
 		public CategoryPage (int categoryId)
 		{
-            CategoryPageModel pm = new CategoryPageModel(categoryId);
-            BindingContext = pm;
+            BindingContext = new CategoryPageModel(categoryId, Navigation);
 			InitializeComponent ();
 		}
 	}

@@ -32,46 +32,46 @@
             <!--TOYS-->
             <StackLayout Grid.Column="0" Grid.Row="0" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="0"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="{Binding MenuItems[0].Id}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Toys" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                <Image Source="MenuIcon01.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="{Binding MenuItems[0].Title}" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="{Binding MenuItems[0].ImagePath}" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
             </StackLayout>
 
             <!--RESTRAINTS-->
             <StackLayout Grid.Column="1" Grid.Row="0" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="1"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="{Binding MenuItems[1].Id}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Restraints" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                <Image Source="MenuIcon02.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="{Binding MenuItems[1].Title}" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="{Binding MenuItems[1].ImagePath}" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
             </StackLayout>
 
             <!--FURNITURES-->
             <StackLayout Grid.Column="0" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="2"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="{Binding MenuItems[2].Id}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Furnitures" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                <Image Source="MenuIcon03.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="{Binding MenuItems[2].Title}" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="{Binding MenuItems[2].ImagePath}" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
             </StackLayout>
 
             <!--OUTFITS-->
             <StackLayout Grid.Column="1" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="3"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="{Binding MenuItems[3].Id}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Outfits" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                <Image Source="MenuIcon04.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="{Binding MenuItems[3].Title}" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="{Binding MenuItems[3].ImagePath}" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
             </StackLayout>
 
             <!--PRACTICES-->
             <StackLayout Grid.Column="0" Grid.Row="2" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="4"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="{Binding MenuItems[4].Id}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="Practices" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                <Image Source="MenuIcon05.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="{Binding MenuItems[4].Title}" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="{Binding MenuItems[4].ImagePath}" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
             </StackLayout>
 
             <!--ABOUT-->

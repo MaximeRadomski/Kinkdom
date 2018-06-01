@@ -6,32 +6,34 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Autofac;
+using Kinkdom.Services.Interfaces;
 using Xamarin.Forms;
 
 namespace Kinkdom.PageModels
 {
     class MainMasterPageModel : MasterDetailPage
     {
-        public ObservableCollection<MainPageMenuItem> MenuItems { get; set; }
+        public List<Category> MenuItems { get; set; }
+
+        private readonly ILocalDatabaseService _localDatabaseService;
 
         public MainMasterPageModel()
         {
-            MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
-                {
-                    new MainPageMenuItem { Id = 0, Title = "Toys", ImagePath = "MenuIcon01.png", Category = CategoryEnum.Toys, TargetType = typeof(CategoryPage)},
-                    new MainPageMenuItem { Id = 1, Title = "Restraints", ImagePath = "MenuIcon02.png", Category = CategoryEnum.Restraints, TargetType = typeof(CategoryPage)},
-                    new MainPageMenuItem { Id = 2, Title = "Furnitures", ImagePath = "MenuIcon03.png", Category = CategoryEnum.Furnitures, TargetType = typeof(CategoryPage)},
-                    new MainPageMenuItem { Id = 3, Title = "Outfits", ImagePath = "MenuIcon04.png", Category = CategoryEnum.Outfits, TargetType = typeof(CategoryPage)},
-                    new MainPageMenuItem { Id = 4, Title = "Practices", ImagePath = "MenuIcon05.png", Category = CategoryEnum.Practices, TargetType = typeof(CategoryPage)}
-                });
+            _localDatabaseService = App.Container.Resolve<ILocalDatabaseService>();
+            LoadItems();
         }
 
-        public new INavigation Navigation { get; set; }
+        public async void LoadItems()
+        {
+            MenuItems = await _localDatabaseService.GetCategories();
+        }
 
         public ICommand ItemClickCommand => new Command<object>(async (item) =>
         {
-            await App.MainMasterPage.Detail.Navigation.PushAsync(new CategoryPage(((MainPageMenuItem)item).Id));
+            await App.MainMasterPage.Detail.Navigation.PushAsync(new CategoryPage(((Category)item).Id));
             App.MainMasterPage.IsPresented = false;
         });
 

@@ -40,6 +40,7 @@ namespace Kinkdom.Droid
             //await Task.Delay(8000); // Simulate a bit of startup work.
             Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
+            await Task.CompletedTask;
         }
 
         public override void OnBackPressed() { }

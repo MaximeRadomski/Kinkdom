@@ -14,9 +14,7 @@ namespace Kinkdom.Views
     {
         public MainDetailPage()
         {
-            MainDetailPageModel pm = new MainDetailPageModel();
-            pm.Navigation = Navigation;
-            BindingContext = pm;
+            BindingContext = new MainDetailPageModel(Navigation);
             InitializeComponent();
         }
     }

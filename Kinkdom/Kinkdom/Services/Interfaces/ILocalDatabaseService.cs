@@ -7,5 +7,6 @@ namespace Kinkdom.Services.Interfaces
     public interface ILocalDatabaseService
     {
         Task<Category> GetCategoryFromId(int id);
+        Task<List<Category>> GetCategories();
     }
 }

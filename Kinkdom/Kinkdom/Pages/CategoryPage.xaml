@@ -5,8 +5,8 @@
              x:Class="Kinkdom.Pages.CategoryPage"
              Title="{Binding Category.Title}">
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="{Binding Category.ImagePath}" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="Black" Margin="10"/>
+        <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="Black" Margin="10" Padding="10">
+            <Image Source="{Binding Category.ImagePath}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

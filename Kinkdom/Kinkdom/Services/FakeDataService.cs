@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Kinkdom.Models;
 using Kinkdom.Services.Interfaces;
@@ -28,6 +29,7 @@ namespace Kinkdom.Services
 
         public async Task<List<Category>> SetAllCategories()
         {
+            await Task.CompletedTask;
             return _categoryList;
         }
     }

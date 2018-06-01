@@ -13,9 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Models\MainPageMenuItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Pages\MainDetailPage.xaml.cs">
       <DependentUpon>MainDetailPage.xaml</DependentUpon>
     </Compile>

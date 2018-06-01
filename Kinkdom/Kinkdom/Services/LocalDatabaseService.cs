@@ -47,22 +47,23 @@ namespace Kinkdom.Services
 
         public async Task<Category> GetCategoryFromId(int id)
         {
-            for (int i = 0; i < Db.Table<Category>().Count(); i++)
-            {
-                Debug.WriteLine("   [Debug] : " + Db.Get<Category>(i).Description);
-            }
-            Category tmp;
-            try
-            {
-                tmp = Db.Get<Category>(id);
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
+            var tmp = Db.Get<Category>(id);
+            await Task.CompletedTask;
             if (tmp != null)
                 return Db.Get<Category>(id);
             return null;
+        }
+
+        public async Task<List<Category>> GetCategories()
+        {
+            List<Category> tmpList = new List<Category>();
+            var table = Db.Table<Category>();
+            foreach (var item in table)
+            {
+                tmpList.Add(item);
+            }
+            await Task.CompletedTask;
+            return tmpList;
         }
     }
 }
