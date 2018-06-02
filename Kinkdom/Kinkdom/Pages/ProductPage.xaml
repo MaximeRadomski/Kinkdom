@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Kinkdom.Converters;assembly=Kinkdom"
+             x:Class="Kinkdom.Pages.ProductPage"
+             Title="{Binding Product.Name}"
+             Style="{StaticResource MainContentPage}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="{Binding Product.IsFavorite, Converter={converters:FavoriteImageFromBoolInverted}}" Priority="0" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Tab" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Padding" Value="20,10,20,30"/>
+                <Setter Property="Margin" Value="20,0,20,-25"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <!--MAIN CONTAINER-->
+        <StackLayout>
+            <!--LOADER-->
+            <ContentView HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}">
+                <ActivityIndicator Color="Black" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </ContentView>
+            <!--CONTENT-->
+            <ScrollView>
+            <StackLayout IsVisible="{Binding IsLoading, Converter={converters:NegateBooleanConverter}}" Spacing="0">
+                <Grid HorizontalOptions="Fill" Margin="10" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding Product.Image01}"/>
+                    <StackLayout Grid.Column="1" HorizontalOptions="Start"  VerticalOptions="Start">
+                        <Label Text="{Binding Product.Name}" FontSize="25" TextColor="{StaticResource KinkdomBlack}"/>
+                        <Label Text="{Binding Categories}" FontSize="15" TextColor="{StaticResource KinkdomBlack}"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Product.Level, Converter={converters:LevelImageFromId}}" HeightRequest="25"/>
+                            <Label Text="{Binding Product.Level, Converter={converters:LevelLabelFromId}}" FontSize="15" TextColor="{StaticResource KinkdomBlack}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+                <!--WHAT IS IT ?-->
+                <StackLayout HorizontalOptions="Fill" BackgroundColor="Transparent" Spacing="0" Margin="0,-30,0,0">
+                    <Frame Style="{StaticResource Tab}" BackgroundColor="{StaticResource KinkdomBlack}" HorizontalOptions="End">
+                        <Label Text="WHAT IS IT ?" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource KinkdomWhite}"/>
+                    </Frame>
+                    <ContentView BackgroundColor="{StaticResource KinkdomBlack}" Padding="20">
+                        <Label Text="{Binding Product.Desc01}" TextColor="{StaticResource KinkdomWhite}"/>
+                    </ContentView>
+                </StackLayout>
+                <!--TIPS & TRICKS-->
+                <StackLayout HorizontalOptions="Fill" BackgroundColor="{StaticResource KinkdomBlack}" Spacing="0">
+                    <Frame Style="{StaticResource Tab}" BackgroundColor="{StaticResource KinkdomWhite}" HorizontalOptions="Start">
+                        <Label Text="TIPS AND TRICKS" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource KinkdomBlack}"/>
+                    </Frame>
+                    <ContentView BackgroundColor="{StaticResource KinkdomWhite}" Padding="20">
+                        <Label Text="{Binding Product.Desc01}" TextColor="{StaticResource KinkdomBlack}"/>
+                    </ContentView>
+                </StackLayout>
+                <!--CAUTION-->
+                <StackLayout HorizontalOptions="Fill" BackgroundColor="{StaticResource KinkdomWhite}" Spacing="0">
+                    <Frame Style="{StaticResource Tab}" BackgroundColor="{StaticResource KinkdomBlack}" HorizontalOptions="End">
+                        <Label Text="CAUTION" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource KinkdomWhite}"/>
+                    </Frame>
+                    <ContentView BackgroundColor="{StaticResource KinkdomBlack}" Padding="20">
+                        <Label Text="{Binding Product.Desc01}" TextColor="{StaticResource KinkdomWhite}"/>
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

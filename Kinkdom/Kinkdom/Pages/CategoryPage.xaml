@@ -2,11 +2,46 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pm="clr-namespace:Kinkdom.PageModels;"
+             xmlns:converters="clr-namespace:Kinkdom.Converters;assembly=Kinkdom"
+             xmlns:controls="clr-namespace:Kinkdom.Controls;assembly=Kinkdom"
              x:Class="Kinkdom.Pages.CategoryPage"
-             Title="{Binding Category.Title}">
+             Title="{Binding Category.Title}"
+             Style="{StaticResource MainContentPage}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Reload" Priority="0" Order="Primary" Command="{Binding ReloadDataCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="Black" Margin="10" Padding="10">
-            <Image Source="{Binding Category.ImagePath}"/>
+        <!--MAIN CONTAINER-->
+        <StackLayout>
+            <!--LOADER-->
+            <ContentView HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}">
+                <ActivityIndicator Color="Black" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </ContentView>
+            <!--CONTENT-->
+            <StackLayout IsVisible="{Binding IsLoading, Converter={converters:NegateBooleanConverter}}">
+                <controls:BetterListView x:Name="ProductsListView"
+                                     ItemsSource="{Binding Products}"
+                                     ItemClickCommand="{Binding ItemClickCommand}"
+                                     VerticalOptions="FillAndExpand"
+                                     RowHeight="70">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid HorizontalOptions="Fill" Margin="10" ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="35"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding Image01}"/>
+                                    <Label Grid.Column="1" HorizontalOptions="Start"  VerticalOptions="Center" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="18" TextColor="{StaticResource KinkdomBlack}"/>
+                                    <Image Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding IsFavorite, Converter={converters:FavoriteImageOnlyTrue}}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BetterListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

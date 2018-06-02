@@ -24,6 +24,8 @@ namespace Kinkdom.Services
             LoadTables();
         }
 
+        #region LoadDataRegion
+
         private void LoadDatabase()
         {
             string dbPath = Path.Combine(
@@ -43,16 +45,28 @@ namespace Kinkdom.Services
                     Db.Insert(category);
                 }
             }
+            Db.CreateTable<Product>();
+            if (!Db.Table<Product>().Any() || Db.Table<Product>().Count() < await _fakeDataService.CountAllProducts())
+            {
+                Db.DeleteAll<Product>();
+                List<Product> allProducts = await _fakeDataService.SetAllProducts();
+                foreach (var product in allProducts)
+                {
+                    Db.Insert(product);
+                }
+            }
         }
 
-        public async Task<Category> GetCategoryFromId(int id)
+        public async Task ReloadData()
         {
-            var tmp = Db.Get<Category>(id);
+            Db.DeleteAll<Product>();
+            LoadTables();
             await Task.CompletedTask;
-            if (tmp != null)
-                return Db.Get<Category>(id);
-            return null;
         }
+
+        #endregion
+
+        #region CategoriesRegion
 
         public async Task<List<Category>> GetCategories()
         {
@@ -66,5 +80,56 @@ namespace Kinkdom.Services
             await Task.CompletedTask;
             return tmpList;
         }
+
+        public async Task<Category> GetCategoryFromId(int id)
+        {
+            var tmp = Db.Get<Category>(id);
+            await Task.CompletedTask;
+            if (tmp != null)
+                return Db.Get<Category>(id);
+            return null;
+        }
+
+        #endregion
+
+        #region ProductsRegion
+
+        public async Task<List<Product>> GetProducts()
+        {
+            List<Product> tmpList = new List<Product>();
+            var table = Db.Table<Product>();
+            foreach (var item in table)
+            {
+                tmpList.Add(item);
+            }
+            await Task.CompletedTask;
+            return tmpList;
+        }
+
+        public async Task<Product> GetProductFromId(int id)
+        {
+            var tmp = Db.Get<Product>(id);
+            await Task.CompletedTask;
+            return tmp;
+        }
+
+        public async Task<List<Product>> GetProductsFromCategory(int categoryId)
+        {
+            var query = from product in Db.Table<Product>()
+                where product.Category01.Equals(categoryId) ||
+                      product.Category02.Equals(categoryId) ||
+                      product.Category03.Equals(categoryId)
+                orderby product.Name
+                select product;
+            List<Product> tmpList = new List<Product>();
+            foreach (Product product in query)
+            {
+                tmpList.Add(product);
+            }
+            await Task.CompletedTask;
+            return tmpList;
+        }
+
+        #endregion
     }
 }
