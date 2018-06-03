@@ -24,7 +24,9 @@ namespace Kinkdom.Services
                 new Category { Id = 1, Title = "Restraints", ImagePath = "MenuIcon02.png"},
                 new Category { Id = 2, Title = "Furnitures", ImagePath = "MenuIcon03.png"},
                 new Category { Id = 3, Title = "Outfits", ImagePath = "MenuIcon04.png"},
-                new Category { Id = 4, Title = "Practices", ImagePath = "MenuIcon05.png"}
+                new Category { Id = 4, Title = "Practices", ImagePath = "MenuIcon05.png"},
+                new Category { Id = 5, Title = "About", ImagePath = "MenuIcon06.png"},
+                new Category { Id = 6, Title = "Favorites", ImagePath = "Favorite04.png"}
             };
             _products = new List<Product>
             {
@@ -63,8 +65,7 @@ namespace Kinkdom.Services
                     Category01 = 0,
                     Category02 = 1,
                     Image01 = "ButtPlug01.png",
-                    Level = 1,
-                    IsFavorite = true},
+                    Level = 1},
                 new Product {Name = "Test05",
                     Desc01 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur, lectus vel tristique scelerisque, elit justo tempor purus, vel accumsan magna lorem eget est. Pellentesque ac mattis lorem. Vivamus magna sem, feugiat consectetur elit in, pretium facilisis dui.",
                     Desc02 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur, lectus vel tristique scelerisque, elit justo tempor purus, vel accumsan magna lorem eget est. Pellentesque ac mattis lorem. Vivamus magna sem, feugiat consectetur elit in, pretium facilisis dui.",

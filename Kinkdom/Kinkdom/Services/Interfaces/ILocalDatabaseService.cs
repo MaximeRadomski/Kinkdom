@@ -14,5 +14,9 @@ namespace Kinkdom.Services.Interfaces
         Task<List<Product>> GetProducts();
         Task<Product> GetProductFromId(int id);
         Task<List<Product>> GetProductsFromCategory(int categoryId);
+        Task<Product> GetRandomProduct();
+
+        Task<List<Product>> GetFavorites();
+        Task AddRemoveFavoriteProduct(Product product);
     }
 }

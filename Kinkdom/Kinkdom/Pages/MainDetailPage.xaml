@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Kinkdom.Converters;assembly=Kinkdom"
              x:Class="Kinkdom.Views.MainDetailPage"
              Title="KINKDOM"
              Style="{StaticResource MainContentPage}">
@@ -14,6 +15,7 @@
             <Style x:Key="whiteOnBlackLabelMedium" TargetType="Label">
                 <Setter Property="TextColor" Value="#FFFFFF"/>
                 <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -23,9 +25,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="120"/>
-                <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -49,7 +51,7 @@
             </StackLayout>
 
             <!--FURNITURES-->
-            <StackLayout Grid.Column="0" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+            <StackLayout Grid.Column="2" Grid.Row="0" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="{Binding MenuItems[2].Id}"/>
                 </StackLayout.GestureRecognizers>
@@ -58,7 +60,7 @@
             </StackLayout>
 
             <!--OUTFITS-->
-            <StackLayout Grid.Column="1" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+            <StackLayout Grid.Column="0" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="{Binding MenuItems[3].Id}"/>
                 </StackLayout.GestureRecognizers>
@@ -67,7 +69,7 @@
             </StackLayout>
 
             <!--PRACTICES-->
-            <StackLayout Grid.Column="0" Grid.Row="2" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+            <StackLayout Grid.Column="1" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushCategoryCommand}" CommandParameter="{Binding MenuItems[4].Id}"/>
                 </StackLayout.GestureRecognizers>
@@ -76,19 +78,53 @@
             </StackLayout>
 
             <!--ABOUT-->
-            <StackLayout Grid.Column="1" Grid.Row="2" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
+            <StackLayout Grid.Column="2" Grid.Row="1" BackgroundColor="Black" Spacing="0" VerticalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushAboutCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="About" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                <Image Source="MenuIcon06.png" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
+                <Label Style="{StaticResource whiteOnBlackLabelMedium}" Text="{Binding MenuItems[5].Title}" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                <Image Source="{Binding MenuItems[5].ImagePath}" VerticalOptions="CenterAndExpand" HeightRequest="60"/>
             </StackLayout>
         </Grid>
-        <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout x:Name="RandomContainer" Spacing="0" Margin="0" Padding="0">
-                <StackLayout BackgroundColor="Black" HeightRequest="30" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
-                <StackLayout></StackLayout>    
+        <!--FAVORITES-->
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
+            <StackLayout BackgroundColor="{StaticResource KinkdomBlack}" HeightRequest="30" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" Padding="10" Spacing="10">
+                <Label Text="Favorites" TextColor="{StaticResource KinkdomWhite}" FontAttributes="Bold" FontSize="18" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                <Image Source="Favorite04.png" HorizontalOptions="End"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushFavoritesCommand}"/>
+                </StackLayout.GestureRecognizers>
             </StackLayout>
-        </StackLayout>-->
+        </StackLayout>
+        <!--RANDOM PRODUCT-->
+        <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+            <StackLayout BackgroundColor="{StaticResource KinkdomBlack}" HeightRequest="30" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" Padding="10" Spacing="10">
+                <Label Text="Random Product" TextColor="{StaticResource KinkdomWhite}" FontAttributes="Bold" FontSize="18" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                <Image Source="Dice01.png" HorizontalOptions="End"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GetRandomProductCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <Frame CornerRadius="0" Padding="0" Margin="1,0">
+                <Grid HorizontalOptions="Fill" Margin="10" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding RandomProduct.Image01}"/>
+                    <StackLayout Grid.Column="1" HorizontalOptions="Start"  VerticalOptions="Start">
+                        <Label Text="{Binding RandomProduct.Name}" FontSize="25" TextColor="{StaticResource KinkdomBlack}"/>
+                        <Label Text="{Binding RandomProductCategories}" FontSize="15" TextColor="{StaticResource KinkdomBlack}"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding RandomProduct.Level, Converter={converters:LevelImageFromId}}" HeightRequest="25"/>
+                            <Label Text="{Binding RandomProduct.Level, Converter={converters:LevelLabelFromId}}" FontSize="15" TextColor="{StaticResource KinkdomBlack}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushRandomProductCommand}" CommandParameter="{Binding RandomProduct.Id}"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Frame>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

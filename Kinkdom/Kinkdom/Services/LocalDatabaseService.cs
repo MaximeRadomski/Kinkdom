@@ -37,14 +37,16 @@ namespace Kinkdom.Services
         public async void LoadTables()
         {
             Db.CreateTable<Category>();
-            if (!Db.Table<Category>().Any())
+            if (!Db.Table<Category>().Any() || Db.Table<Category>().Count() < await _fakeDataService.CountAllCategories())
             {
+                Db.DeleteAll<Category>();
                 List<Category> allCategories = await _fakeDataService.SetAllCategories();
                 foreach (var category in allCategories)
                 {
                     Db.Insert(category);
                 }
             }
+
             Db.CreateTable<Product>();
             if (!Db.Table<Product>().Any() || Db.Table<Product>().Count() < await _fakeDataService.CountAllProducts())
             {
@@ -60,6 +62,7 @@ namespace Kinkdom.Services
         public async Task ReloadData()
         {
             Db.DeleteAll<Product>();
+            Db.DeleteAll<Category>();
             LoadTables();
             await Task.CompletedTask;
         }
@@ -77,6 +80,7 @@ namespace Kinkdom.Services
                 Debug.Write("|     [DEBUG]     | " + item.Id + " - " + item.Title);
                 tmpList.Add(item);
             }
+
             await Task.CompletedTask;
             return tmpList;
         }
@@ -102,6 +106,7 @@ namespace Kinkdom.Services
             {
                 tmpList.Add(item);
             }
+
             await Task.CompletedTask;
             return tmpList;
         }
@@ -126,8 +131,41 @@ namespace Kinkdom.Services
             {
                 tmpList.Add(product);
             }
+
             await Task.CompletedTask;
             return tmpList;
+        }
+
+        public async Task<Product> GetRandomProduct()
+        {
+            await Task.CompletedTask;
+            return Db.Query<Product>("SELECT * FROM Product ORDER BY RANDOM() LIMIT 1;")[0];
+        }
+
+        #endregion
+
+        #region Favorites
+
+        public async Task<List<Product>> GetFavorites()
+        {
+            var query = from product in Db.Table<Product>()
+                where product.IsFavorite == true
+                orderby product.Name
+                select product;
+            List<Product> tmpList = new List<Product>();
+            var table = Db.Table<Product>();
+            foreach (var item in table)
+            {
+                tmpList.Add(item);
+            }
+            await Task.CompletedTask;
+            return tmpList;
+        }
+
+        public async Task AddRemoveFavoriteProduct(Product product)
+        {
+            Db.Update(product);
+            await Task.CompletedTask;
         }
 
         #endregion

@@ -12,6 +12,7 @@ namespace Kinkdom.PageModels
         public Product Product { get; set; }
         public bool IsLoading { get; set; }
         public string Categories { get; set; }
+        public bool IsFavorite { get; set; }
 
         private readonly ILocalDatabaseService _localDatabaseService;
         private readonly INavigation _navigation;
@@ -32,7 +33,22 @@ namespace Kinkdom.PageModels
                 Categories += ", " + _localDatabaseService.GetCategoryFromId((int)Product.Category02).Result.Title;
             if (Product.Category03!= null)
                 Categories += ", " + _localDatabaseService.GetCategoryFromId((int)Product.Category03).Result.Title;
+            IsFavorite = Product.IsFavorite;
             IsLoading = false;
         }
+
+        public ICommand AddRemoveFavoriteCommand => new Command(async () =>
+        {
+            if (!Product.IsFavorite)
+            {
+                Product.IsFavorite = true;
+            }
+            else
+            {
+                Product.IsFavorite = false;
+            }
+            await _localDatabaseService.AddRemoveFavoriteProduct(Product);
+            IsFavorite = Product.IsFavorite;
+        });
     }
 }

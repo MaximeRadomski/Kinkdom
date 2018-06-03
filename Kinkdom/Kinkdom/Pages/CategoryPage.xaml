@@ -27,15 +27,15 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid HorizontalOptions="Fill" Margin="10" ColumnSpacing="10">
+                                <Grid HorizontalOptions="Fill" Margin="10,10,20,10" ColumnSpacing="10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="70"/>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="35"/>
+                                        <ColumnDefinition Width="30"/>
                                     </Grid.ColumnDefinitions>
                                     <Image Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding Image01}"/>
                                     <Label Grid.Column="1" HorizontalOptions="Start"  VerticalOptions="Center" VerticalTextAlignment="Center" Text="{Binding Name}" FontSize="18" TextColor="{StaticResource KinkdomBlack}"/>
-                                    <Image Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding IsFavorite, Converter={converters:FavoriteImageOnlyTrue}}"/>
+                                    <Image Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding Level, Converter={converters:LevelImageFromId}}"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

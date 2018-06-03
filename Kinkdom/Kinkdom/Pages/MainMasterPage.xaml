@@ -5,7 +5,7 @@
              x:Class="Kinkdom.Views.MainMasterPage"
              x:Name="CurrentPage"
              Title="Master">
-    <StackLayout BackgroundColor="Black">
+    <StackLayout BackgroundColor="{StaticResource KinkdomBlack}" Spacing="0">
         <ctrl:BetterListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
               HasUnevenRows="true"

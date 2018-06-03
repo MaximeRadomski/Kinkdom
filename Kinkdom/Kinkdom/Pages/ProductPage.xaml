@@ -6,7 +6,7 @@
              Title="{Binding Product.Name}"
              Style="{StaticResource MainContentPage}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="{Binding Product.IsFavorite, Converter={converters:FavoriteImageFromBoolInverted}}" Priority="0" Order="Primary"/>
+        <ToolbarItem Icon="{Binding IsFavorite, Converter={converters:FavoriteImageFromBoolInverted}}" Priority="0" Order="Primary" Command="{Binding AddRemoveFavoriteCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
