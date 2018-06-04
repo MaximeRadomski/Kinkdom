@@ -13,7 +13,7 @@ namespace Kinkdom.Services.Interfaces
 
         Task<List<Product>> GetProducts();
         Task<Product> GetProductFromId(int id);
-        Task<List<Product>> GetProductsFromCategory(int categoryId);
+        Task<List<Product>> GetProductsFromCategory(int categoryId, string searchName);
         Task<Product> GetRandomProduct();
 
         Task<List<Product>> GetFavorites();

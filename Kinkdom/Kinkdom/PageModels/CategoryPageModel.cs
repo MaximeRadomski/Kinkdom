@@ -14,6 +14,8 @@ namespace Kinkdom.PageModels
         public Category Category { get; set; }
         public List<Product> Products { get; set; }
         public bool IsLoading { get; set; }
+        public bool IsSearchingByName { get; set; }
+        public string SearchName { get; set; }
 
         private readonly ILocalDatabaseService _localDatabaseService;
         private readonly INavigation _navigation;
@@ -24,6 +26,7 @@ namespace Kinkdom.PageModels
             _categoryId = categoryId;
             _navigation = navigation;
             _localDatabaseService = App.Container.Resolve<ILocalDatabaseService>();
+            SearchName = null;
             LoadItems(_categoryId);
         }
 
@@ -31,7 +34,7 @@ namespace Kinkdom.PageModels
         {
             IsLoading = true;
             Category = await _localDatabaseService.GetCategoryFromId(categoryId);
-            Products = await _localDatabaseService.GetProductsFromCategory(Category.Id);
+            Products = await _localDatabaseService.GetProductsFromCategory(Category.Id, SearchName);
             IsLoading = false;
         }
 
@@ -48,6 +51,30 @@ namespace Kinkdom.PageModels
         public ICommand ReloadDataCommand => new Command<object>(async (item) =>
         {
             await _localDatabaseService.ReloadData();
+            LoadItems(_categoryId);
+            await Task.CompletedTask;
+        });
+
+        public ICommand SearchByNameEnableCommand => new Command(async () =>
+        {
+            if (IsSearchingByName == false)
+                IsSearchingByName = true;
+            else
+            {
+                IsSearchingByName = false;
+                SearchName = null;
+                LoadItems(_categoryId);
+            }
+            await Task.CompletedTask;
+        });
+
+        public void SearchByName()
+        {
+            LoadItems(_categoryId);
+        }
+
+        public ICommand SearchByNameCommand => new Command(async () =>
+        {
             LoadItems(_categoryId);
             await Task.CompletedTask;
         });

@@ -19,6 +19,7 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ScrollView>
     <StackLayout Padding="10" BackgroundColor="White" Spacing="10">
         <Label Style="{StaticResource blackOnWhiteLabelMedium}" HorizontalOptions="CenterAndExpand" Text="''Because it's good to have kinks''"/>
         <Grid>
@@ -99,7 +100,7 @@
         <!--RANDOM PRODUCT-->
         <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
             <StackLayout BackgroundColor="{StaticResource KinkdomBlack}" HeightRequest="30" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" Padding="10" Spacing="10">
-                <Label Text="Random Product" TextColor="{StaticResource KinkdomWhite}" FontAttributes="Bold" FontSize="18" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Random Weird Stuff" TextColor="{StaticResource KinkdomWhite}" FontAttributes="Bold" FontSize="18" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
                 <Image Source="Dice01.png" HorizontalOptions="End"/>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GetRandomProductCommand}"/>
@@ -127,4 +128,5 @@
             </Frame>
         </StackLayout>
     </StackLayout>
+    </ScrollView>
 </ContentPage>

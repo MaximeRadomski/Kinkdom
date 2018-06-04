@@ -118,14 +118,29 @@ namespace Kinkdom.Services
             return tmp;
         }
 
-        public async Task<List<Product>> GetProductsFromCategory(int categoryId)
+        public async Task<List<Product>> GetProductsFromCategory(int categoryId, string searchName)
         {
-            var query = from product in Db.Table<Product>()
+            TableQuery<Product> query = new TableQuery<Product>(Db);
+            if (searchName == null)
+            {
+                query = from product in Db.Table<Product>()
                 where product.Category01.Equals(categoryId) ||
                       product.Category02.Equals(categoryId) ||
                       product.Category03.Equals(categoryId)
                 orderby product.Name
                 select product;
+            }
+            else
+            {
+                query = from product in Db.Table<Product>()
+                where (product.Category01.Equals(categoryId) ||
+                      product.Category02.Equals(categoryId) ||
+                      product.Category03.Equals(categoryId)) &&
+                      product.Name.ToLower().Contains(searchName.ToLower())
+                orderby product.Name
+                select product;
+            }
+            
             List<Product> tmpList = new List<Product>();
             foreach (Product product in query)
             {

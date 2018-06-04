@@ -24,5 +24,10 @@ namespace Kinkdom.Pages
 	        base.OnAppearing();
 	        ((CategoryPageModel)BindingContext).CustomOnAppearing();
         }
+
+	    private void Entry_OnCompleted(object sender, EventArgs e)
+	    {
+	        ((CategoryPageModel)BindingContext).SearchByName();
+        }
 	}
 }
