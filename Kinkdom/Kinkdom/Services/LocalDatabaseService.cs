@@ -153,8 +153,7 @@ namespace Kinkdom.Services
                 orderby product.Name
                 select product;
             List<Product> tmpList = new List<Product>();
-            var table = Db.Table<Product>();
-            foreach (var item in table)
+            foreach (var item in query)
             {
                 tmpList.Add(item);
             }

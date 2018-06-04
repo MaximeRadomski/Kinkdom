@@ -33,7 +33,11 @@ namespace Kinkdom.PageModels
 
         public ICommand ItemClickCommand => new Command<object>(async (item) =>
         {
-            await App.MainMasterPage.Detail.Navigation.PushAsync(new CategoryPage(((Category)item).Id));
+            int id = ((Category) item).Id;
+            if (id == 6)
+                await App.MainMasterPage.Detail.Navigation.PushAsync(new FavoritesPage());
+            else
+                await App.MainMasterPage.Detail.Navigation.PushAsync(new CategoryPage(id));
             App.MainMasterPage.IsPresented = false;
         });
 

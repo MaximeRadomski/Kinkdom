@@ -1,28 +1,27 @@
-﻿using Kinkdom.PageModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Kinkdom.PageModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Kinkdom.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CategoryPage : ContentPage
+	public partial class FavoritesPage : ContentPage
 	{
-		public CategoryPage (int categoryId)
+		public FavoritesPage ()
 		{
-            BindingContext = new CategoryPageModel(categoryId, Navigation);
-			InitializeComponent ();
-		}
+		    BindingContext = new FavoritesPageModel(Navigation);
+		    InitializeComponent();
+        }
 
 	    protected override void OnAppearing()
 	    {
 	        base.OnAppearing();
-	        ((CategoryPageModel)BindingContext).CustomOnAppearing();
+	        ((FavoritesPageModel)BindingContext).CustomOnAppearing();
         }
-	}
+    }
 }

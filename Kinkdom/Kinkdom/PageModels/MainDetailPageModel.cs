@@ -54,6 +54,11 @@ namespace Kinkdom.PageModels
             await _navigation.PushAsync(new CategoryPage(0));
         });
 
+        public ICommand PushFavoritesCommand => new Command(async () =>
+        {
+            await _navigation.PushAsync(new FavoritesPage());
+        });
+
         public ICommand GetRandomProductCommand => new Command(async () =>
         {
             await LoadRandomProduct();
