@@ -58,7 +58,7 @@
                         <Label Text="TIPS AND TRICKS" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource KinkdomBlack}"/>
                     </Frame>
                     <ContentView BackgroundColor="{StaticResource KinkdomWhite}" Padding="20">
-                        <Label Text="{Binding Product.Desc01}" TextColor="{StaticResource KinkdomBlack}"/>
+                        <Label Text="{Binding Product.Desc02}" TextColor="{StaticResource KinkdomBlack}"/>
                     </ContentView>
                 </StackLayout>
                 <!--CAUTION-->
@@ -67,7 +67,7 @@
                         <Label Text="CAUTION" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource KinkdomWhite}"/>
                     </Frame>
                     <ContentView BackgroundColor="{StaticResource KinkdomBlack}" Padding="20">
-                        <Label Text="{Binding Product.Desc01}" TextColor="{StaticResource KinkdomWhite}"/>
+                        <Label Text="{Binding Product.Desc03}" TextColor="{StaticResource KinkdomWhite}"/>
                     </ContentView>
                 </StackLayout>
             </StackLayout>
