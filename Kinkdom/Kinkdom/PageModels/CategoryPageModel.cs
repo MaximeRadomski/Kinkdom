@@ -33,8 +33,16 @@ namespace Kinkdom.PageModels
         public async void LoadItems(int categoryId)
         {
             IsLoading = true;
-            Category = await _localDatabaseService.GetCategoryFromId(categoryId);
-            Products = await _localDatabaseService.GetProductsFromCategory(Category.Id, SearchName);
+            if (categoryId == -1)
+            {
+                Category = new Category {Title = "All"};
+                Products = await _localDatabaseService.GetProducts();
+            }
+            else
+            {
+                Category = await _localDatabaseService.GetCategoryFromId(categoryId);
+                Products = await _localDatabaseService.GetProductsFromCategory(Category.Id, SearchName);
+            }
             IsLoading = false;
         }
 

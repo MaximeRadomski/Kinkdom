@@ -22,6 +22,15 @@
     <ScrollView>
     <StackLayout Padding="10" BackgroundColor="White" Spacing="10">
         <Label Style="{StaticResource blackOnWhiteLabelMedium}" HorizontalOptions="CenterAndExpand" Text="''Because it's good to have kinks''"/>
+        <!--ALL PRODUCTS-->
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0">
+            <StackLayout BackgroundColor="{StaticResource KinkdomBlack}" HeightRequest="30" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal" Padding="10" Spacing="10">
+                <Label Text="All" TextColor="{StaticResource KinkdomWhite}" FontAttributes="Bold" FontSize="18" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding PushAllCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>

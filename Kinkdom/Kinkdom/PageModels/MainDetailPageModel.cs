@@ -68,5 +68,10 @@ namespace Kinkdom.PageModels
         {
             await _navigation.PushAsync(new ProductPage(productId));
         });
+
+        public ICommand PushAllCommand => new Command(async () =>
+        {
+            await _navigation.PushAsync(new CategoryPage(-1));
+        });
     }
 }

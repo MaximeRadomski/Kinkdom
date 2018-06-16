@@ -20,14 +20,14 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <!--MAIN CONTAINER-->
-        <StackLayout>
+        <StackLayout BackgroundColor="{StaticResource KinkdomBlack}">
             <!--LOADER-->
             <ContentView HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}">
                 <ActivityIndicator Color="Black" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Center"/>
             </ContentView>
             <!--CONTENT-->
             <ScrollView>
-            <StackLayout IsVisible="{Binding IsLoading, Converter={converters:NegateBooleanConverter}}" Spacing="0">
+            <StackLayout IsVisible="{Binding IsLoading, Converter={converters:NegateBooleanConverter}}" Spacing="0" BackgroundColor="{StaticResource KinkdomWhite}">
                 <Grid HorizontalOptions="Fill" Margin="10" ColumnSpacing="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>
@@ -62,7 +62,7 @@
                     </ContentView>
                 </StackLayout>
                 <!--CAUTION-->
-                <StackLayout HorizontalOptions="Fill" BackgroundColor="{StaticResource KinkdomWhite}" Spacing="0">
+                <StackLayout HorizontalOptions="Fill" BackgroundColor="{StaticResource KinkdomWhite}" Spacing="0" Margin="0,0,0,-2">
                     <Frame Style="{StaticResource Tab}" BackgroundColor="{StaticResource KinkdomBlack}" HorizontalOptions="End">
                         <Label Text="CAUTION" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource KinkdomWhite}"/>
                     </Frame>
