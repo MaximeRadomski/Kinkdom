@@ -60,6 +60,8 @@ namespace Kinkdom.Services
                     Desc03 = " - Try to use models with a good quality strap around your head, bad quality leather or plastic can leave you with pain and marks on the very sides of your lips. But it might be a kink as well !\n - Try to choose something else than \"Marmelade\" as a safe word, you might have trouble to say it properly with this toy in your mouth.",
                     Category01 = 1,
                     Image01 = "BitGag01.png",
+                    Image02 = "BallGag01.png",
+                    Image03 = "DentalForceps01.png",
                     Level = 0},
                 new Product {Name = "Bondage Bed",
                     Desc01 = " - Designed to receive a mattress and to bind a lot of bondage tools to it, like ropes, chains, handcuffs and more...\n - Some even have a cage under the mattress, a Bondage Yoke or a Saint Andrew's Cross.",

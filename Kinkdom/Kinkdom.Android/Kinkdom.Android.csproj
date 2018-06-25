@@ -26,6 +26,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
+    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -401,49 +409,55 @@
     <AndroidResource Include="Resources\drawable-hdpi\DentalForceps01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BondageHarness01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BondageHarness01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BondageHarness02.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BondageHarness02.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BondageHood01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BondageHood01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BondageMittens01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BondageMittens01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BondageTape01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BondageTape01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BreastBinder01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BreastBinder01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\ChastityBelt01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ChastityBelt01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\CockRings01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\CockRings01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Collar01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Collar01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Corset01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Corset01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\DentalForceps01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\DentalForceps01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BitGag01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BitGag01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BondageBed01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BondageBed01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BondageBelt01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BondageBelt01.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\BondageCuffs01.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BondageCuffs01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ButtonImageSlideShow02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ButtonImageSlideShow01.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
