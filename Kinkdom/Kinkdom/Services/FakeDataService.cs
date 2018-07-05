@@ -101,7 +101,7 @@ namespace Kinkdom.Services
                 new Product {Name = "Mittens",
                     Desc01 = " - Designed to prevent the wearer from grasping anything, usually made of stiff material, mittens are made to cause discomfort to the wearer.\n - Some models are long gloves that can going up to the shoulder, and usually have rings over the arm in order to be used like an armbinder.",
                     Desc02 = " - You can find a metal ring at the end of many models, useful to bind to another restraint device.\n - Into furry fetish ? A large amount of animals paws exist to fulfil your desires !",
-                    Desc03 = " - Because they aren't made of flexible material, you can easily damage your wrists on the most rigid models if you put too much weight on them.\n - ",
+                    Desc03 = " - Because they aren't made of flexible material, you can easily damage your wrists on the most rigid models if you put too much weight on them.",
                     Category01 = 1,
                     Category02 = 3,
                     Image01 = "BondageMittens01.png",
@@ -116,10 +116,22 @@ namespace Kinkdom.Services
                     Level = 1
                 },
                 new Product {Name = "Yoke",
-                    Image01 = ""
+                    Desc01 = " - Designed to keep the neck and wrists to a restraining position, or on some models, the wrists and ankles tied together.\n - Yokes are used when simple ropes or cuffs offer too much mobility and/or the bottom tends to move too much.",
+                    Desc02 = " - Be prepared of the size and weight yokes can represent! Those in wood or metal can be exhausting for your arms or shoulders.\n - If it's a fixed yoke, on a bondage bed for example, your initial position should be as comfy as possible. We are talking about a restraining device after all, but a bad position can leave you for example with a loss of your strengh in your legs, which can be very unpleasant and exhausting.",
+                    Desc03 = " - Using a yoke can be surprising at first. Ff you are used to cuffs or ropes, you will find here a much more rigid restraining device. Therefore, try not to move or resist the yoke as much as you would do with cuffs or ropes, it can damages your wrists and neck.",
+                    Category01 = 1,
+                    Category02 = 2,
+                    Image01 = "Yoke01.png",
+                    Level = 1
                 },
                 new Product {Name = "Breast Binder",
-                    Image01 = "BreastBinder01.png"
+                    Desc01 = " - Designed to exercise a pression over the breast.\n - Some are made to hold the breasts tight  together and have a pression coming from the sides. Some to flaten them against the body, those models can have little spikes pushing around or on the nipples. Some to go around each breast or to flaten each breast over itself.",
+                    Desc02 = " - A breast binder going around the chest can easily fall on small chests if not tied tight enough. But tightening it might cause pain. An easy way to solve this issue is to bind it to a collar or anything going above it.",
+                    Desc03 = " - Nipples can be very sensitive, and can hurt a lot even after the use of a breast binder. Take care of the spickyness and the pressure of your breast binder.\n - Once again, blood flow is important, if you lose too much sensation after a while wearing a breast binder, you might consider relaxing it a bit.",
+                    Category01 = 1,
+                    Category02 = 3,
+                    Image01 = "BreastBinder01.png",
+                    Level = 1
                 },
                 new Product {Name = "Butt Plug",
                     Desc01 = " - Designed to be inserted into the rectum. The anal cavity having a lot of nerves, it is a good toy to enjoy anal pleasure.\n - If you have a penis, you can use it to stimulate your prostate.\n - If you have a vagina, you can use it to fill the anal cavity and therefore making the vagina tighter.",
