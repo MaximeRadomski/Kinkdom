@@ -13,6 +13,8 @@ namespace Kinkdom.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CategoryPage : ContentPage
 	{
+	    private bool _entryVisible = false;
+
 		public CategoryPage (int categoryId)
 		{
             BindingContext = new CategoryPageModel(categoryId, Navigation);
@@ -29,5 +31,18 @@ namespace Kinkdom.Pages
 	    {
 	        ((CategoryPageModel)BindingContext).SearchByName();
         }
+
+	    private void MenuItem_OnClicked(object sender, EventArgs e)
+	    {
+	        if (!_entryVisible)
+	        {
+	            _entryVisible = true;
+	            SearchEntry.Focus();
+            }
+	        else
+	        {
+	            _entryVisible = false;
+            }
+	    }
 	}
 }

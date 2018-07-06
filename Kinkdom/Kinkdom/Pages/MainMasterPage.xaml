@@ -10,10 +10,10 @@
               SeparatorVisibility="None"
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}"
-              BackgroundColor="Black"
+              BackgroundColor="{StaticResource KinkdomBlack}"
               ItemClickCommand="{Binding ItemClickCommand}">
             <ListView.Header>
-                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource KinkdomWhite}">
                     <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="Kinkdom.png">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ReturnToMainmenuCommand}"/>
@@ -26,7 +26,7 @@
                     <ViewCell>
                         <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand" Orientation="Horizontal" HeightRequest="45">
                             <Image HorizontalOptions="Start" VerticalOptions="Center" Source="{Binding ImagePath}"/>
-                            <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="18" TextColor="White" Margin="10,0"/>
+                            <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="18" TextColor="{StaticResource KinkdomWhite}" Margin="10,0"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

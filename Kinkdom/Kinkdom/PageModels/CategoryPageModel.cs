@@ -15,11 +15,21 @@ namespace Kinkdom.PageModels
         public List<Product> Products { get; set; }
         public bool IsLoading { get; set; }
         public bool IsSearchingByName { get; set; }
-        public string SearchName { get; set; }
+
+        public string SearchName
+        {
+            get { return _searchName; }
+            set
+            {
+                _searchName = value;
+                OnSearchNameChanged();
+            }
+        }
 
         private readonly ILocalDatabaseService _localDatabaseService;
         private readonly INavigation _navigation;
         private readonly int _categoryId;
+        private string _searchName;
 
         public CategoryPageModel(int categoryId, INavigation navigation)
         {
@@ -36,14 +46,20 @@ namespace Kinkdom.PageModels
             if (categoryId == -1)
             {
                 Category = new Category {Title = "All"};
-                Products = await _localDatabaseService.GetProducts();
+                Products = await _localDatabaseService.GetProducts(SearchName);
             }
             else
             {
                 Category = await _localDatabaseService.GetCategoryFromId(categoryId);
                 Products = await _localDatabaseService.GetProductsFromCategory(Category.Id, SearchName);
             }
+
             IsLoading = false;
+        }
+
+        private void OnSearchNameChanged()
+        {
+            LoadItems(_categoryId);
         }
 
         public void CustomOnAppearing()
@@ -53,7 +69,7 @@ namespace Kinkdom.PageModels
 
         public ICommand ItemClickCommand => new Command<object>(async (item) =>
         {
-            await _navigation.PushAsync(new ProductPage(((Product)item).Id));
+            await _navigation.PushAsync(new ProductPage(((Product) item).Id));
         });
 
         public ICommand ReloadDataCommand => new Command<object>(async (item) =>
@@ -73,6 +89,7 @@ namespace Kinkdom.PageModels
                 SearchName = null;
                 LoadItems(_categoryId);
             }
+
             await Task.CompletedTask;
         });
 

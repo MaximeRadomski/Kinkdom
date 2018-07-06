@@ -23,7 +23,7 @@
         <StackLayout BackgroundColor="{StaticResource KinkdomBlack}">
             <!--LOADER-->
             <ContentView HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}">
-                <ActivityIndicator Color="Black" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <ActivityIndicator Color="{StaticResource KinkdomBlack}" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Center"/>
             </ContentView>
             <!--CONTENT-->
             <ScrollView>

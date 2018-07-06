@@ -98,13 +98,28 @@ namespace Kinkdom.Services
 
         #region ProductsRegion
 
-        public async Task<List<Product>> GetProducts()
+        public async Task<List<Product>> GetProducts(string searchName)
         {
             List<Product> tmpList = new List<Product>();
-            var table = Db.Table<Product>();
-            foreach (var item in table)
+            if (searchName == null)
             {
-                tmpList.Add(item);
+                var table = Db.Table<Product>();
+                foreach (var item in table)
+                {
+                    tmpList.Add(item);
+                }
+            }
+            else
+            {
+                TableQuery<Product> query = new TableQuery<Product>(Db);
+                query = from product in Db.Table<Product>()
+                where product.Name.ToLower().Contains(searchName.ToLower())
+                orderby product.Name
+                select product;
+                foreach (Product product in query)
+                {
+                    tmpList.Add(product);
+                }
             }
 
             await Task.CompletedTask;

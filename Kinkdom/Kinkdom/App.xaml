@@ -4,6 +4,13 @@
              x:Class="Kinkdom.App">
     <Application.Resources>
         <ResourceDictionary>
+            <!-- ooooooooooooooooooooooooooooooooooo -->
+            <!--            KINKDOM COLORS           -->
+            <!-- ooooooooooooooooooooooooooooooooooo -->
+
+            <Color x:Key="KinkdomBlack">#000000</Color>
+            <Color x:Key="KinkdomWhite">#FFFFFF</Color>
+
             <Color x:Key="Primary">#000000</Color>
             <Color x:Key="PrimaryDark">#1976D2</Color>
             <Color x:Key="Accent">#96d1ff</Color>
@@ -11,18 +18,6 @@
             <Color x:Key="DarkBackgroundColor">#FFFFFF</Color>
             <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
             <Color x:Key="LightTextColor">#999999</Color>
-
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="BarTextColor" Value="White" />
-            </Style>
-
-            <!-- ooooooooooooooooooooooooooooooooooo -->
-            <!--            KINKDOM COLORS           -->
-            <!-- ooooooooooooooooooooooooooooooooooo -->
-
-            <Color x:Key="KinkdomBlack">#000000</Color>
-            <Color x:Key="KinkdomWhite">#FFFFFF</Color>
 
             <!-- ooooooooooooooooooooooooooooooooooo -->
             <!--             CONTENT PAGE            -->
@@ -45,7 +40,16 @@
                 <Setter Property="TextColor" Value="#000000"/>
                 <Setter Property="FontSize" Value="30"/>
             </Style>
-            
+
+            <!-- ooooooooooooooooooooooooooooooooooo -->
+            <!--               STYLES                -->
+            <!-- ooooooooooooooooooooooooooooooooooo -->
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource KinkdomBlack}" />
+                <Setter Property="BarTextColor" Value="{StaticResource KinkdomWhite}" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -11,7 +11,7 @@ namespace Kinkdom.Services.Interfaces
         Task<List<Category>> GetCategories();
         Task<Category> GetCategoryFromId(int id);
 
-        Task<List<Product>> GetProducts();
+        Task<List<Product>> GetProducts(string searchName);
         Task<Product> GetProductFromId(int id);
         Task<List<Product>> GetProductsFromCategory(int categoryId, string searchName);
         Task<Product> GetRandomProduct();
